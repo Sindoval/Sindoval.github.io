@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 2</title>
+</head>
+<body>
+    <header>
+        <h1>Atividade 2 - Índice de Massa Corporal(IMC)</h1>
+    </header>
+    <main>
+        <form action="">
+            <input type="text" placeholder="Informe seu Peso" id="peso">
+            <input type="text" placeholder="Informe sua Altura" id="altura">
+            <button id="btn">Calcular</button>
+        </form>
+        <h2>IMC: <span id="imc"></span>  <span id="resultado"></span></h2>
+    </main>
+    <footer><a href="../index.html">Página Inicial</a></footer>
+    <script>
+        
+        const button = document.getElementById("btn")
+        const span1 = document.getElementById("imc")
+        const span2 = document.getElementById("resultado")
+
+        button.addEventListener("click", (event) => {
+            event.preventDefault()
+            const peso = document.getElementById("peso")
+            const altura = document.getElementById("altura")
+            const imc = parseFloat(peso.value) / (parseFloat(altura.value) * parseFloat(altura.value))
+
+            if (imc < 17) {
+                span2.textContent = 'Muito abaixo do peso';
+                span2.style.color = 'red'
+            } else if (imc >= 17 && imc <= 18.49) {
+                span2.textContent = 'Abaixo do peso';
+                span2.style.color = 'orange'
+            } else if (imc >= 18.50 && imc <= 24.99) {
+                span2.textContent = 'Peso normal'
+                span2.style.color = 'green'
+            } else if (imc >= 25 && imc <= 29.99) {
+                span2.textContent = 'Acima do peso';
+                span2.style.color = 'orange'
+            } else if (imc >= 30 && imc <= 34.99) {
+                span2.textContent = 'Obesidade I';
+                span2.style.color = 'red'
+            } else if (imc >= 35 && imc <= 39.99) {
+                span2.textContent = 'Obesidade II (severa)';
+                span2.style.color = 'red'
+            } else if (imc >= 40) {
+                span2.textContent = 'Obesidade III (mórbida)';
+                span2.style.color = 'red'
+            }
+        span1.innerHTML = imc.toFixed(2)
+        peso.value = ''
+        altura.value = ''
+        })
+        
+    </script>
+</body>
+</body>
+</html>
